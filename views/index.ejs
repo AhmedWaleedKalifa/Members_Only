@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <h1><%= title %></h1>
+        <% if (locals.currentUser) { %>
+            <% if(locals.currentUser.membership=="member"){%>
+                <%if(locals.currentUser.admin===true){%>
+                    <h3>Welcome Boss <%= currentUser.username %></h3>
+                    <div class="messages">
+                    <% if(locals.messages){%>
+                        <% messages.forEach(function(message){%>
+                            <div>
+                                <h3><%= message.title %></h3>
+                                <p><%= message.content %></p>
+                                <form action="/messages/delete/<%= message.id%>" method="post">
+                                    <button type="submit">Delete</button>
+                                </form>
+                                <form action="/messages/get/<%= message.id %>" method="post">
+                                    <button type="submit"> details</button>
+                                </form>    
+                            </div>
+                        <%}); %>
+                    <%}%>
+                    </div>
+                <%}else{%>
+                    <h3>Welcome Member <%= currentUser.username %></h3>
+                    <div class="messages">
+                    <% if(locals.messages){%>
+                        <% messages.forEach(function(message){%>
+                            <div>
+                                <h3><%= message.title %></h3>
+                                <p><%= message.content %></p>
+                                <form action="/messages/get/<%= message.id %>" method="post">
+                                    <button type="submit"> details</button>
+                                </form>                            
+                            </div>
+                        <%}); %>
+                    <%}%>
+                    </div>
+                <%}%>
+            <%}else{%>
+                <h3>Welcome  <%= currentUser.username %></h3>
+                <div class="messages">
+                    <% if(locals.messages){%>
+                        <% messages.forEach(function(message){%>
+                            <div>
+                                <h3><%= message.title %></h3>
+                                <p><%= message.content %></p>
+                                <form action="/messages/<%= message.id %>">
+                                    <button type="submit"> details</button>
+                                </form>
+                            </div>
+                        <%}); %>
+                    <%}%>
+                    </div>
+            <%}%>
+            <div class="links">
+                <a href="/club">Enter Club</a>
+                <a href="/messages/add">Send Message</a>
+                <a href="/users/log-out">Logout</a>
+            </div>
+    <% }else { %>
+            <h3>Not logged in</h3>
+            <div class="messages">
+                <% if(locals.messages){%>
+                    <% messages.forEach(function(message){%>
+                        <div>
+                            <h3><%= message.title %></h3>
+                            <p><%= message.content %></p>
+                        </div>
+                    <%}); %>
+                <%}%>
+                </div>
+            <div class="links">
+                <a href="/users/sign-up">Sign Up</a>
+                <a href="/users/login">Login</a>
+            </div>
+        <% } %>
+
+        
+    </div>
+
+</body>
+</html>

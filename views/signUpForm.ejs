@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <h2><%= title %></h2>
+        <% if(locals.errors){%>
+            <ul>
+                <% errors.forEach(error=>{ %>
+                    <li><%= error.msg%></li>
+                <%}); %>
+            </ul>
+        <%}%>
+        <form action="/users/sign-up" method="post">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
