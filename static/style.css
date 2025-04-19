@@ -17,7 +17,7 @@ html,body{
     background-color: var(--second-color);
     height: 100vh;
     width: 100%;
-    background: linear-gradient(#e66465, #9198e5);
+    background-image: linear-gradient(to bottom,var(--main-color),var(--second-color));
 }
 .container{
     opacity: .8;
@@ -58,24 +58,35 @@ h3{
     margin: 20px auto;
     width: 90%;
     height: 90%;
-    overflow-y: scroll;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    overflow-y: scroll;
 }
-.messages div{
+.messages>div{
     display: grid;
     border: 2px solid var(--main-color);
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 5px 8px;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
     grid-auto-flow: column;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 2fr 4fr ;
+    width: 100%;
+    height: 16%;
+    background-image: linear-gradient(var(--container-color),var(--second-color));
+
 }
 .messages div form{
     padding: 0px;
     margin: 0px;
-    display: inline;
+    display: flex;
     height: 40px;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
 }
 .messages div form button{
     padding: 0px;
@@ -87,11 +98,33 @@ h3{
     cursor: pointer;
     margin-right: 8px;
     font-size: 16px;
+    background-color: var(--main-color);
 }
 .messages div h3,.messages div p{
     color: var(--main-color);
-
     margin: 0;
+    margin-right: 6px;
+    text-align: start;
+    overflow: hidden;
+}
+.messages div h3{
+    max-width: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.messages div p{
+    flex-grow: 3;
+    max-width: 100%;
+    overflow-y: hidden;
+    flex-shrink: 1;
+}
+.messages .buttons{
+    height: 50px;
+    display: flex;
+    width: fit-content;
+    border: none;
+    align-items: center;
+    justify-content: center;
 }
 
 .links{
@@ -174,4 +207,7 @@ td{
     font-weight: 400;
     font-size:18px;
     height: 50px;
+}
+.sec{
+    background-image: url(animal.jpg);
 }

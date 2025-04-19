@@ -19,12 +19,14 @@
                             <div>
                                 <h3><%= message.title %></h3>
                                 <p><%= message.content %></p>
-                                <form action="/messages/delete/<%= message.id%>" method="post">
-                                    <button type="submit">Delete</button>
-                                </form>
-                                <form action="/messages/get/<%= message.id %>" method="post">
-                                    <button type="submit"> details</button>
-                                </form>    
+                                <div class="buttons">
+                                    <form action="/messages/delete/<%= message.id%>" method="post">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                    <form action="/messages/get/<%= message.id %>" method="post">
+                                        <button type="submit"> details</button>
+                                    </form>    
+                                </div>
                             </div>
                         <%}); %>
                     <%}%>
@@ -37,12 +39,15 @@
                             <div>
                                 <h3><%= message.title %></h3>
                                 <p><%= message.content %></p>
-                                <form action="/messages/get/<%= message.id %>" method="post">
-                                    <button type="submit"> details</button>
-                                </form>                            
+                                <div class="buttons">
+                                    <form action="/messages/get/<%= message.id %>" method="post">
+                                        <button type="submit"> details</button>
+                                    </form>  
+                                </div>               
                             </div>
                         <%}); %>
                     <%}%>
+                  
                     </div>
                 <%}%>
             <%}else{%>
@@ -53,9 +58,7 @@
                             <div>
                                 <h3><%= message.title %></h3>
                                 <p><%= message.content %></p>
-                                <form action="/messages/<%= message.id %>">
-                                    <button type="submit"> details</button>
-                                </form>
+                                
                             </div>
                         <%}); %>
                     <%}%>
